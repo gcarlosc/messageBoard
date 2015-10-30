@@ -1,0 +1,10 @@
+<h1>Tablero de mensajes</h1>
+
+<% @messages.each do |m| %>
+  <h2><%=m.title %></h2>  
+  <h4>Posted by <%= m.user.email %> <%= time_ago_in_words(m.created_at) %> ago</h4>
+  <p><%= truncate(m.description, length: 55) {link_to "seguir leyendo", m} %></p><br>
+<% end %>
+<% if user_signed_in? %>
+<%= link_to "New Message", new_message_path, class: "btn btn-default" %>
+<% end %>

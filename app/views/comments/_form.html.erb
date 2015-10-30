@@ -1,0 +1,9 @@
+<%= simple_form_for([@message, @message.comments.build]) do |c| %>
+
+<%= c.input :content, label: "Comentario" %>
+<% if user_signed_in? %>
+<%= c.button :submit %>
+<% else %>
+<p>Debe <%= link_to "INGRESAR", new_user_session_path %> para comentar</p>
+<% end %>
+<% end %>
